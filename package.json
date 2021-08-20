@@ -1,8 +1,9 @@
 {
     "name": "vscode-open-in-sublime-text",
-    "displayName": "vscode-open-in-sublime-text",
+    "displayName": "Open in Sublime Text",
     "description": "",
-    "version": "0.0.1",
+    "icon": "352x352.png",
+    "version": "0.0.2",
     "publisher": "floydawong",
     "repository": "https://github.com/floyda-vscode-extension/vscode-open-in-sublime-text",
     "engines": {
