@@ -3,7 +3,7 @@
     "displayName": "Open in Sublime Text",
     "description": "",
     "icon": "352x352.png",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "floydawong",
     "repository": "https://github.com/floyda-vscode-extension/vscode-open-in-sublime-text",
     "engines": {

@@ -39,14 +39,33 @@ function getAppName() {
     }
 }
 
+function getCursorPosition(): vscode.Position {
+    let posZero = new vscode.Position(0, 0)
+
+    const editor = vscode.window.activeTextEditor
+    if (!editor) return posZero
+
+    const selections = editor.selections
+    if (selections.length === 0) return posZero
+
+    let cursor = selections[0].active
+    let line: number = cursor.line
+    let character: number = cursor.character
+
+    return new vscode.Position(line, character)
+}
+
 async function openInSublimeMerge() {
     try {
         const relevantPath = await findRelevantPath()
         if (!relevantPath) return
-        await open(relevantPath, { app: getAppName() })
+
+        let pos = getCursorPosition()
+        // Filenames may be given a :line or :line:column suffix to open at a specific location.
+        let target = `${relevantPath}:${pos.line + 1}:${pos.character + 1}`
+        await open(target, { app: getAppName() })
     } catch (err) {
-        console.error(err)
-        vscode.window.showErrorMessage(err)
+        vscode.window.showErrorMessage('err: ' + err)
     }
 }
 
